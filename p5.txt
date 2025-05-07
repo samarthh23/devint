@@ -1,0 +1,13 @@
+FROM openjdk
+WORKDIR /app
+COPY . /app
+RUN javac Add.java
+CMD ["java","Add"]
+
+docker build -t img1 .
+docker run img1
+
+docker images
+docker login
+docker tag img1 samarthh23/add-app
+docker push samarthh23/add-app
