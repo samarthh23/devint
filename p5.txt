@@ -11,3 +11,4 @@ docker login
 docker images
 docker tag img1:latest samarthh23/add-app
 docker push samarthh23/add-app
+docker pull samarthh23/add-app
