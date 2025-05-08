@@ -44,10 +44,10 @@ Inside the JSON folder, create a file like data.json
 Example data.json:
 
 {
-  "name": "Samarth",
-  "age": 22,
-  "branch": "ISE"
+  "firstname": "Samarth",
+  "lastname": "Hegde"
 }
+
 
 
 ---
@@ -84,25 +84,30 @@ Right-click → New → Class → Name: JsonReader
 
 Paste the following code:
 
+package maven.lab6;
+
 import java.io.FileReader;
+import java.io.IOException;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-public class JsonReader {
-    public static void main(String[] args) {
-        try {
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("JSON/data.json"));
-            JSONObject jsonObject = (JSONObject) obj;
+public class demo {
+    public static void main(String[] args) throws IOException, ParseException {
+        JSONParser jsonparser = new JSONParser();
+        FileReader reader = new FileReader(".\\JSON\\data.json");  
+        Object obj = jsonparser.parse(reader);
+        JSONObject empjsonobj = (JSONObject) obj;
 
-            System.out.println("Name: " + jsonObject.get("name"));
-            System.out.println("Age: " + jsonObject.get("age"));
-            System.out.println("Branch: " + jsonObject.get("branch"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String fname = (String) empjsonobj.get("firstname");
+        String lname = (String) empjsonobj.get("lastname");
+
+        System.out.println("First name: " + fname);
+        System.out.println("Last name: " + lname);
     }
 }
+
 
 
 ---
