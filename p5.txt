@@ -7,7 +7,7 @@ CMD ["java","Add"]
 docker build -t img1 .
 docker run img1
 
-docker images
 docker login
-docker tag img1 samarthh23/add-app
+docker images
+docker tag img1:latest samarthh23/add-app
 docker push samarthh23/add-app
